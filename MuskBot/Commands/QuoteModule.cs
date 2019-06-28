@@ -40,18 +40,9 @@ namespace MuskBot.Commands
         {
             await ReplyAsync(Quips.GetRandomQuip());
         }
-
-        //TODO: pull out to separate meme module
-        [Command("meme")]
-        public async Task MemeAsync()
-        {
-            var apikey = _config["giphy"];
-            //TODO: make url static const
-            var url = $"http://api.giphy.com/v1/gifs/random?api_key={apikey}&tag=elon musk";
-            new HandleMessageUser().HandleMeme(Context, url);
-        }
     }
-
+    
+    //TODO: Pull out to a mediator
     public class HandleMessageUser
     {
         //TODO: reduce this function
