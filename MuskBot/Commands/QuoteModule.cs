@@ -7,6 +7,7 @@ using MuskBot.Helper;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Text.RegularExpressions;
@@ -40,18 +41,9 @@ namespace MuskBot.Commands
         {
             await ReplyAsync(Quips.GetRandomQuip());
         }
-
-        //TODO: pull out to separate meme module
-        [Command("meme")]
-        public async Task MemeAsync()
-        {
-            var apikey = _config["giphy"];
-            //TODO: make url static const
-            var url = $"http://api.giphy.com/v1/gifs/random?api_key={apikey}&tag=elon musk";
-            new HandleMessageUser().HandleMeme(Context, url);
-        }
     }
-
+    
+    //TODO: Pull out to a mediator
     public class HandleMessageUser
     {
         //TODO: reduce this function
@@ -107,6 +99,48 @@ namespace MuskBot.Commands
                     await ctx.Channel.SendMessageAsync(obj);
                 }
             }
+        }
+
+        public async Task HandleDictionaryLookup(SocketCommandContext ctx, string url)
+        {
+            using(var client = new HttpClient())
+            {
+                var result = await client.GetAsync(url);
+                if (result.IsSuccessStatusCode)
+                {
+                    var responseContent = await result.Content.ReadAsStringAsync();
+                    try
+                    {
+                        var rawJson = JArray.Parse(responseContent);
+                        var firstLevel = rawJson[0];
+                        var fl = firstLevel["fl"].Value<string>();
+                        var defs = firstLevel["shortdef"].Values<string>();
+
+                        var embed = new EmbedBuilder();
+
+                        embed.WithTitle(fl);
+                        embed.WithAuthor(ctx.Message.Author);
+                        embed.WithColor(Color.Green);
+                        AddFields(defs, "definition:", embed);
+                        var e = embed.Build();
+
+                        await ctx.Channel.SendMessageAsync(embed: e);
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.Message);
+                    }
+                }
+            }
+        }
+
+        private EmbedBuilder AddFields(IEnumerable<string> strings, string fieldName, EmbedBuilder builder)
+        {
+            foreach (var s in strings)
+            {
+                builder.AddField(fieldName, s, true);
+            }
+            return builder;
         }
     }
 }
