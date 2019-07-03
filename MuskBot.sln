@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.28922.388
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MuskBot", "MuskBot\MuskBot.csproj", "{AAE26A76-66C3-4538-B23B-795E87CE50B0}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FSharpOxfordDictionary", "FSharpOxfordDictionary\FSharpOxfordDictionary.fsproj", "{482B6F9E-F59D-4D6E-8C61-5E91568D68A1}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "OxfordDictionaryApp", "OxfordDictionaryApp\OxfordDictionaryApp.fsproj", "{697EE6ED-59ED-4867-BBB9-6E6EECCBCCBE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{AAE26A76-66C3-4538-B23B-795E87CE50B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AAE26A76-66C3-4538-B23B-795E87CE50B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AAE26A76-66C3-4538-B23B-795E87CE50B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{482B6F9E-F59D-4D6E-8C61-5E91568D68A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{482B6F9E-F59D-4D6E-8C61-5E91568D68A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{482B6F9E-F59D-4D6E-8C61-5E91568D68A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{482B6F9E-F59D-4D6E-8C61-5E91568D68A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{697EE6ED-59ED-4867-BBB9-6E6EECCBCCBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{697EE6ED-59ED-4867-BBB9-6E6EECCBCCBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{697EE6ED-59ED-4867-BBB9-6E6EECCBCCBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{697EE6ED-59ED-4867-BBB9-6E6EECCBCCBE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
