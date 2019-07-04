@@ -13,4 +13,12 @@
       <ProjectReference Include="..\FSharpOxfordDictionary\FSharpOxfordDictionary.fsproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Content Include="config.json" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="FSharp.Data" Version="3.1.1" />
+    </ItemGroup>
+
 </Project>
