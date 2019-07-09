@@ -23,12 +23,19 @@ namespace MuskBot.Commands
             new HandleMessageUser().HandleMeme(Context, url);
         }
 
-        [Command("google")]
-        [Alias("lmgtfy")]
+        [Command("lmgtfy")]
         public async Task GetGoogleLink(params string[] words)
         {
             var combined = words.Aggregate((x, y) => x + "+" + y);
             var url = "https://lmgtfy.com/?q=" + combined;
+            await ReplyAsync(url);
+        }
+
+        [Command("google")]
+        public async Task GetDirectGoogleLink(params string[] words)
+        {
+            var combined = words.Aggregate((x, y) => x + "+" + y);
+            var url = "https://www.google.com/search?q=" + combined;
             await ReplyAsync(url);
         }
     }
