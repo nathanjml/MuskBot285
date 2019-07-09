@@ -17,12 +17,12 @@ namespace MuskBot.Commands
 {
     public class QuoteModule : ModuleBase<SocketCommandContext>
     {
-        private readonly ResponseAwaiter _messageInt;
+        private readonly ResponseAwaiter _responseAwaiter;
         private readonly IConfiguration _config;
 
         public QuoteModule(ResponseAwaiter response, IConfiguration config)
         {
-            _messageInt = response;
+            _responseAwaiter = response;
             _config = config;
         }
 
@@ -33,7 +33,7 @@ namespace MuskBot.Commands
             //WARNING: DO NOT AWAIT.
             //awaiting user input will block
             //prefer "fire and forget"
-            new HandleMessageUser().HandleMessage(mentionedUser, _messageInt, Context.User.Id, Context.Channel.Id, Context);
+            new HandleMessageUser().HandleMessage(mentionedUser, _responseAwaiter, Context.User.Id, Context.Channel.Id, Context);
         }
 
         [Command("quote")]
@@ -141,6 +141,39 @@ namespace MuskBot.Commands
                 builder.AddField(fieldName, s, true);
             }
             return builder;
+        }
+
+        public async Task HandleRPS(SocketCommandContext ctx, ulong mentionedUserId, ResponseAwaiter responseService)
+        {
+           var mentionedUser = await ctx.Channel.GetUserAsync(mentionedUserId);
+           var result = await responseService.GetResponseFromUser(mentionedUserId, ctx.Channel.Id);
+            if (!result.HasErrors)
+            {
+                if(result.Data.ToLower() == "y")
+                {
+                    await ctx.Channel.SendMessageAsync($"RPS! {ctx.User.Mention} vs. {mentionedUser.Mention}");
+                    await ctx.Channel.SendMessageAsync("*Note: *MuskBot* will message you individually in a DM.*");
+                    //start rps game.
+                    var userOneDM = await ctx.User.GetOrCreateDMChannelAsync();
+                    var userTwoDM = await mentionedUser.GetOrCreateDMChannelAsync();
+
+                    await userOneDM.SendMessageAsync("type `rock` `paper` or `scissors` in this DM.");
+                    var userOneResponse = await responseService.GetResponseFromUser(ctx.User.Id, userOneDM.Id);
+
+                    await userTwoDM.SendMessageAsync("type `rock` `paper` or `scissors` in this DM.");
+                    var userTwoResponse = await responseService.GetResponseFromUser(mentionedUserId, userTwoDM.Id);
+
+                    if(!userOneResponse.HasErrors && !userTwoResponse.HasErrors)
+                    {
+                        await ctx.Channel.SendMessageAsync($"{ctx.User.Mention} used {userOneResponse.Data} and {mentionedUser.Mention} used {userTwoResponse.Data}");
+                    }
+                    else
+                    {
+                        await ctx.Channel.SendMessageAsync("A player didn't answer in time and the game has been canceled");
+                        //timeout or error occured
+                    }
+                }
+            }
         }
     }
 }
