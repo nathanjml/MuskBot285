@@ -7,8 +7,8 @@ namespace MuskBot.Helper
     public static class Quips
     {
         //Lists
-        private static List<string> RegularQuips = new List<string> {Wholesome, WatchItHappen, Extraordinary, Seppuku, Reality, Mars, Failure, NegativeFeedback, SelfDrivingCars, Work, Ummm, Stealing, RussianMissiles, Pyramids, GoingHome, Vacation, RussianAssassaination, Dating, FutureOfCars };
-        private static List<string> MentionQuips = new List<string> {SomethingWrong, ZuccBoi, StealData, Russian, Muskyboi, Fail, Intern, Coding };
+        private static List<string> RegularQuips = new List<string> {Wholesome, WatchItHappen, Extraordinary, Seppuku, Reality, Mars, Failure, NegativeFeedback, SelfDrivingCars, Work, Ummm, Stealing, RussianMissiles, Pyramids, GoingHome, Vacation, RussianAssassaination, Dating, FutureOfCars, Catgirls, NoCats, WarrenBuffett};
+        private static List<string> MentionQuips = new List<string> {SomethingWrong, ZuccBoi, StealData, Russian, Muskyboi, Fail, Intern, Coding, Spaceballs, NotAFlamethrower, MovingQuickly, Underappreciated, Haggling, DontGoogleIt };
         
         //regular strings
         public const string Wholesome = "When something is important enough, you do it even if the odds are not in your favor.";
@@ -30,8 +30,11 @@ namespace MuskBot.Helper
         public const string RussianAssassaination = "My family fears that the Russians will assassinate me.";
         public const string Dating = "I would like to allocate more time to dating, though. I need to find a girlfriend.";
         public const string FutureOfCars = "You can’t have a person driving a two-ton death machine.";
-        
-        
+        public const string Catgirls = "Scientists say it’s a crucial step towards catgirls";
+        public const string NoCats = "Cats, probably not tbh";
+        public const string WarrenBuffett = "That’s a direct quote from Warren Buffett";
+
+
         //special mention strings ('=' is the character that is replaced)
         public const string SomethingWrong = "Is there a problem here? Do I offend you =?";
         public const string ZuccBoi = "= have you met my friend, **zuckerbot**";
@@ -41,6 +44,12 @@ namespace MuskBot.Helper
         public const string Fail = "No Tesla integrations on your project =? Expect failure.";
         public const string Intern = "You remind me of one of my interns =.";
         public const string Coding = "SpaceX needs you =.";
+        public const string Spaceballs = "Also =, I stole the idea from Spaceballs";
+        public const string NotAFlamethrower = "It’s Not a Flamethrower, Mr. =";
+        public const string MovingQuickly = "= is moving at ~25 times the speed of sound & orbits the Earth every 90 minutes";
+        public const string Underappreciated = "Later in life = is underappreciated";
+        public const string Haggling = "But, if you’re going to buy a =, be sure to haggle properly!";
+        public const string DontGoogleIt = "If you don’t already know what a = is, don’t google it. You have been warned.";
 
         public static string GetRandomQuip(string mentionUser)
         {
