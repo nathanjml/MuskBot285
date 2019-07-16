@@ -1,5 +1,6 @@
 ﻿using Discord.Commands;
 using Microsoft.Extensions.Configuration;
+using MuskBot.Core.MemeService;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -7,28 +8,33 @@ namespace MuskBot.Commands
 {
     public class MemeModule : ModuleBase<SocketCommandContext>
     {
-        private readonly IConfiguration _config;
+        private readonly IMemeService _memeService;
 
-        public MemeModule(IConfiguration config)
+        public MemeModule(IMemeService memeService)
         {
-            _config = config;
+            _memeService = memeService;
         }
 
         [Command("meme")]
         [Alias("gif")]
         public async Task PostMemeAsync()
         {
-            var apikey = _config["giphy"];
-            var url = $"http://api.giphy.com/v1/gifs/random?api_key={apikey}&tag=elon musk";
-            new HandleMessageUser().HandleMeme(Context, url);
+            _memeService.GetMeme(Context);
         }
 
-        [Command("google")]
-        [Alias("lmgtfy")]
+        [Command("lmgtfy")]
         public async Task GetGoogleLink(params string[] words)
         {
             var combined = words.Aggregate((x, y) => x + "+" + y);
             var url = "https://lmgtfy.com/?q=" + combined;
+            await ReplyAsync(url);
+        }
+
+        [Command("google")]
+        public async Task GetDirectGoogleLink(params string[] words)
+        {
+            var combined = words.Aggregate((x, y) => x + "+" + y);
+            var url = "https://www.google.com/search?q=" + combined;
             await ReplyAsync(url);
         }
     }
