@@ -86,20 +86,6 @@ namespace MuskBot.Commands
                 }
             } //else time-out occured
         }
-        public async Task HandleMeme(SocketCommandContext ctx, string url)
-        {
-            using(var client = new HttpClient())
-            {
-                var result = await client.GetAsync(url);
-                var responseContent = await result.Content.ReadAsStringAsync();
-                if (result.IsSuccessStatusCode)
-                {
-                    //extract just the gif url to post to the channel
-                    var obj = JObject.Parse(responseContent).SelectToken("data").Value<string>("url");
-                    await ctx.Channel.SendMessageAsync(obj);
-                }
-            }
-        }
 
         public async Task HandleDictionaryLookup(SocketCommandContext ctx, string url)
         {
