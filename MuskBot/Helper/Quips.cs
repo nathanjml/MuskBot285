@@ -64,7 +64,7 @@ namespace MuskBot.Helper
         public const string Idea = "That's the idea, =";
         public const string Nintendo = "Nintendo won’t let us, =";
         public const string Factor ="It’s a factor, =";
-        public const string Candy = "Candy is coming, ="; Droids, NGE, Bees, Idea, Nintendo, Factor, Candy, PhysicsSim, MiLady
+        public const string Candy = "Candy is coming, =";
         public const string PhysicsSim = "Physics is a set of compression functions for the simulation, =";
         public const string MiLady = "Milady =, my shield is yours";
 
