@@ -1,6 +1,7 @@
 ﻿{
   "token": "",
   "giphy": "",
+  "dictionary": "",
   "messageTimeout": 20000,
   "prefix": "elon! "
 }
