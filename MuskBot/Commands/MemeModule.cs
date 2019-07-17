@@ -17,9 +17,9 @@ namespace MuskBot.Commands
 
         [Command("meme")]
         [Alias("gif")]
-        public async Task PostMemeAsync()
+        public async Task PostMemeAsync(string tags = "elon musk")
         {
-            _memeService.GetMeme(Context);
+            _memeService.GetMeme(Context, tags);
         }
 
         [Command("lmgtfy")]
