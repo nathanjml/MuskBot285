@@ -87,47 +87,7 @@ namespace MuskBot.Commands
             } //else time-out occured
         }
 
-        public async Task HandleDictionaryLookup(SocketCommandContext ctx, string url)
-        {
-            using(var client = new HttpClient())
-            {
-                var result = await client.GetAsync(url);
-                if (result.IsSuccessStatusCode)
-                {
-                    var responseContent = await result.Content.ReadAsStringAsync();
-                    try
-                    {
-                        var rawJson = JArray.Parse(responseContent);
-                        var firstLevel = rawJson[0];
-                        var fl = firstLevel["fl"].Value<string>();
-                        var defs = firstLevel["shortdef"].Values<string>();
 
-                        var embed = new EmbedBuilder();
-
-                        embed.WithTitle(fl);
-                        embed.WithAuthor(ctx.Message.Author);
-                        embed.WithColor(Color.Green);
-                        AddFields(defs, "definition:", embed);
-                        var e = embed.Build();
-
-                        await ctx.Channel.SendMessageAsync(embed: e);
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine(e.Message);
-                    }
-                }
-            }
-        }
-
-        private EmbedBuilder AddFields(IEnumerable<string> strings, string fieldName, EmbedBuilder builder)
-        {
-            foreach (var s in strings)
-            {
-                builder.AddField(fieldName, s, true);
-            }
-            return builder;
-        }
 
         public async Task HandleRPS(SocketCommandContext ctx, ulong mentionedUserId, ResponseAwaiter responseService)
         {

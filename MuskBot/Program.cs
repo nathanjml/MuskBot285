@@ -3,6 +3,7 @@ using Discord.Commands;
 using Discord.WebSocket;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using MuskBot.Core.DictionaryService;
 using MuskBot.Core.MemeService;
 using MuskBot.Handler;
 using MustBot.Handler;
@@ -46,6 +47,7 @@ namespace MuskBot
                 .AddSingleton<ResponseAwaiter>()
                 .AddSingleton<IConfiguration>(_config)
                 .AddSingleton<IMemeService, MemeService>()
+                .AddSingleton<IDictionaryService, DictionaryService>()
                 .AddSingleton<DiscordSocketClient>((x) => _client)
                 .AddSingleton<BaseSocketClient>((x) => _client);
 

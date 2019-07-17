@@ -1,6 +1,7 @@
 ﻿{
-  "token": "",
-  "giphy": "",
+  "token": "NjAwNjY1Mzk1NDEzNzc4NDYy.XS3Dog.LINt3IpE5-02_gIvJLX0Vlr2MUQ",
+  "giphy": "TFdCDB38arlgM0bFmnwzdveK3bYeu7np",
+  "dictionary": "0a0090a7-6351-41fe-acec-3507b245e74a",
   "messageTimeout": 20000,
-  "prefix": "elon! "
+  "prefix": "e! "
 }

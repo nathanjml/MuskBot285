@@ -1,25 +1,24 @@
 ﻿using Discord.Commands;
 using Microsoft.Extensions.Configuration;
+using MuskBot.Core.DictionaryService;
 using System.Threading.Tasks;
 
 namespace MuskBot.Commands
 {
     public class DictionaryModule : ModuleBase<SocketCommandContext>
     {
-        private const string DictEndpoint = "https://www.dictionaryapi.com/api/v3/references/collegiate/json/";
-        private readonly IConfiguration _config;
+        private readonly IDictionaryService _dictionaryService;
 
-        public DictionaryModule(IConfiguration config)
+        public DictionaryModule(IDictionaryService dictionaryService)
         {
-            _config = config;
+            _dictionaryService = dictionaryService;
         }
 
         [Command("define")]
         [Alias("def")]
         public async Task LookupWord(string word)
         {
-            var finalEndpoint = $"{DictEndpoint}{word}?key={_config["dictionary"]}";
-            new HandleMessageUser().HandleDictionaryLookup(Context, finalEndpoint);
+            _dictionaryService.LookupWord(Context, word);
         }
     }
 }
