@@ -3,9 +3,12 @@ using Discord.Commands;
 using Discord.WebSocket;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using MuskBot.Core.CryptoService;
 using MuskBot.Core.DictionaryService;
 using MuskBot.Core.MemeService;
+using MuskBot.Core.RpsGameService;
 using MuskBot.Handler;
+using MuskBot.Helper;
 using MustBot.Handler;
 using System.IO;
 using System.Threading.Tasks;
@@ -45,11 +48,14 @@ namespace MuskBot
                 .AddSingleton<CommandService>()
                 .AddSingleton<CommandHandler>()
                 .AddSingleton<ResponseAwaiter>()
+                .AddSingleton<CryptoCurrencyLookup>()
                 .AddSingleton<IConfiguration>(_config)
                 .AddSingleton<IMemeService, MemeService>()
                 .AddSingleton<IDictionaryService, DictionaryService>()
                 .AddSingleton<DiscordSocketClient>((x) => _client)
-                .AddSingleton<BaseSocketClient>((x) => _client);
+                .AddSingleton<BaseSocketClient>((x) => _client)
+                .AddTransient<IRPSGameService, RPSGameService>()
+                .AddTransient<ICryptoService, CryptoService>();
 
             return services;
         }
