@@ -50,6 +50,7 @@ namespace MuskBot.Helper
         public const string Underappreciated = "Later in life = is underappreciated";
         public const string Haggling = "But, if you’re going to buy a =, be sure to haggle properly!";
         public const string DontGoogleIt = "If you don’t already know what a = is, don’t google it. You have been warned.";
+        public const string Competition = "= will have the best project this semester, I am sure of it.";
 
         public static string GetRandomQuip(string mentionUser)
         {

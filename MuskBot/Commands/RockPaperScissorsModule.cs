@@ -1,4 +1,5 @@
 ﻿using Discord.Commands;
+using MuskBot.Core.RpsGameService;
 using MuskBot.Handler;
 using System;
 using System.Collections.Generic;
@@ -10,11 +11,11 @@ namespace MuskBot.Commands
 {
     public class RockPaperScissorsModule : ModuleBase<SocketCommandContext>
     {
-        private readonly ResponseAwaiter _responseAwaiter;
+        private readonly IRPSGameService _rpsGameService;
 
-        public RockPaperScissorsModule(ResponseAwaiter responseAwaiter)
+        public RockPaperScissorsModule(IRPSGameService rpsGameService)
         {
-            _responseAwaiter = responseAwaiter;
+            _rpsGameService = rpsGameService;
         }
 
         [Command("rps")]
@@ -23,7 +24,7 @@ namespace MuskBot.Commands
             var id = Regex.Replace(mentionedUser, @"[^\d]", "");
             var ulongParsedid = ulong.Parse(id);
             await Context.Channel.SendMessageAsync($"Challenge created! {mentionedUser} must respond with `y` to start the game!");
-            new HandleMessageUser().HandleRPS(Context, ulongParsedid, _responseAwaiter);
+            _rpsGameService.CreateGame(Context, ulongParsedid);
         }
     }
 }
