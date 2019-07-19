@@ -12,13 +12,12 @@ namespace MuskBot.Core.MemeService
     public interface IMemeService
     {
         Task GetMeme(SocketCommandContext scc, string tags);
-        Task GetMeme(SocketCommandContext scc);
     }
 
-    public class MemeService : IMemeService
+    public class GiphyMemeService : IMemeService
     {
         private readonly string url;
-        public MemeService(IConfiguration config)
+        public GiphyMemeService(IConfiguration config)
         {
             url = $"http://api.giphy.com/v1/gifs/random?api_key={config["giphy"]}"; 
         }
@@ -37,10 +36,31 @@ namespace MuskBot.Core.MemeService
                 }
             }
         }
+    }
 
-        public async Task GetMeme(SocketCommandContext scc)
+    public class TenorMemeService : IMemeService
+    {
+        private readonly string url;
+
+        public TenorMemeService(IConfiguration config)
         {
-            await this.GetMeme(scc, "elon musk");
+            url = $"https://api.tenor.com/v1/random?key={config["tenor"]}";
+        }
+
+        public async Task GetMeme(SocketCommandContext scc, string tags)
+        {
+            using (var client = new HttpClient())
+            {
+                var result = await client.GetAsync($"{url}&q={tags}&limit=1");
+                var responseContent = await result.Content.ReadAsStringAsync();
+                if (result.IsSuccessStatusCode)
+                {
+                    //extract just the gif url to post to the channel
+                    var obj = JObject.Parse(responseContent).Value<JArray>("results");
+                    var url = obj[0].Value<string>("url");
+                    await scc.Channel.SendMessageAsync(url);
+                }
+            }
         }
     }
 }

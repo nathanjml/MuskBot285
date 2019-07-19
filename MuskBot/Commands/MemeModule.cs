@@ -8,18 +8,19 @@ namespace MuskBot.Commands
 {
     public class MemeModule : ModuleBase<SocketCommandContext>
     {
-        private readonly IMemeService _memeService;
+        private readonly MemeServiceFactory _memeServiceFactory;
 
-        public MemeModule(IMemeService memeService)
+        public MemeModule(MemeServiceFactory memeService)
         {
-            _memeService = memeService;
+            _memeServiceFactory = memeService;
         }
 
         [Command("meme")]
         [Alias("gif")]
-        public async Task PostMemeAsync(string tags = "elon musk")
+        public async Task PostMemeAsync(string tags = "elon-musk", string flag = "-t")
         {
-            _memeService.GetMeme(Context, tags);
+            var service = _memeServiceFactory.Create(flag);
+            service.GetMeme(Context, tags);
         }
 
         [Command("lmgtfy")]
