@@ -7,7 +7,7 @@ namespace MuskBot.Helper
     public static class Quips
     {
         //Lists
-        private static List<string> RegularQuips = new List<string> {Wholesome, WatchItHappen, Extraordinary, Seppuku, Reality, Mars, Failure, NegativeFeedback, SelfDrivingCars, Work, Ummm, Stealing, RussianMissiles, Pyramids, GoingHome, Vacation, RussianAssassaination, Dating, FutureOfCars, Catgirls, NoCats, WarrenBuffett, KanyeWest, Money, ScientificallyCorrect, WhareAreTheAliens, IAmAnAlien, Scale, MarsBars, Reality, HaHa, BusinessPlan, PlanesInSpace, Considerations, Emperor, BadDate, Tunnels, IWasJoking, Irony, Me, WatchThis, Awkward, FlamethrowerSales, TunnelCreator, AlienSubterfuge, GetOffLawn, ThatWouldSuck, TerribleIdea, Stab, Rockets, AprilFools, ThatActuallyHappened, Magnet, BeCareful };
+        private static List<string> RegularQuips = new List<string> {Wholesome, WatchItHappen, Extraordinary, Seppuku, RealityIsNotReal, Mars, Failure, NegativeFeedback, SelfDrivingCars, Work, Ummm, Stealing, RussianMissiles, Pyramids, GoingHome, Vacation, RussianAssassaination, Dating, FutureOfCars, Catgirls, NoCats, WarrenBuffett, KanyeWest, Money, ScientificallyCorrect, WhereAreTheAliens, IAmAnAlien, Scale, MarsBars, Reality, HaHa, BusinessPlan, PlanesInSpace, Considerations, Emperor, BadDate, Tunnels, IWasJoking, Irony, Me, WatchThis, Awkward, FlamethrowerSales, TunnelCreator, AlienSubterfuge, GetOffLawn, ThatWouldSuck, TerribleIdea, Stab, Rockets, AprilFools, ThatActuallyHappened, Magnet, BeCareful };
         private static List<string> MentionQuips = new List<string> {SomethingWrong, ZuccBoi, StealData, Russian, Muskyboi, Fail, Intern, Coding, Spaceballs, NotAFlamethrower, MovingQuickly, Underappreciated, Haggling, DontGoogleIt, Beware };
         
         //regular strings
@@ -15,7 +15,7 @@ namespace MuskBot.Helper
         public const string WatchItHappen = "I could either watch it happen or be a part of it.";
         public const string Extraordinary = "I think it is possible for ordinary people to choose to be extraordinary.";
         public const string Seppuku = "My mentality is that of a samurai. I would rather commit [REDACTED] than fail.";
-        public const string Reality = "There's a billion-to-one chance we're living in base reality.";
+        public const string RealityIsNotReal = "There's a billion-to-one chance we're living in base reality.";
         public const string Mars = "I'd like to die on Mars, just not on impact";
         public const string Failure = "Failure is an option here.";
         public const string NegativeFeedback = "I think it is very important to actively seek out and listen very carefully to negative feedback.";
@@ -53,7 +53,7 @@ namespace MuskBot.Helper
         public const string Me = "I'm not sure I want to be me. Why do others want to?";
         public const string WatchThis = "Watch this...";
         public const string Awkward = "Yeah, that could be awkward with a rocket launch.";
-        public const string FlamethrowerSasles = "I thank you, for any who has bought our flamethrower. You will not be sorry... or maybe you will. Hehehehe, it won't be boring.";
+        public const string FlamethrowerSales = "I thank you, for any who has bought our flamethrower. You will not be sorry... or maybe you will. Hehehehe, it won't be boring.";
         public const string TunnelCreator = "I invented tunnels.";
         public const string AlienSubterfuge = "We try to confuse the ailiens as much as possible.";
         public const string GetOffLawn = "Get off my lawn!";
