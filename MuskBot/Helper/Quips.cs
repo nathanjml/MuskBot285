@@ -7,8 +7,14 @@ namespace MuskBot.Helper
     public static class Quips
     {
         //Lists
-        private static List<string> RegularQuips = new List<string> {Wholesome, WatchItHappen, Extraordinary, Seppuku, RealityIsNotReal, Mars, Failure, NegativeFeedback, SelfDrivingCars, Work, Ummm, Stealing, RussianMissiles, Pyramids, GoingHome, Vacation, RussianAssassaination, Dating, FutureOfCars, Catgirls, NoCats, WarrenBuffett, KanyeWest, Money, ScientificallyCorrect, WhereAreTheAliens, IAmAnAlien, Scale, MarsBars, Reality, HaHa, BusinessPlan, PlanesInSpace, Considerations, Emperor, BadDate, Tunnels, IWasJoking, Irony, Me, WatchThis, Awkward, FlamethrowerSales, TunnelCreator, AlienSubterfuge, GetOffLawn, ThatWouldSuck, TerribleIdea, Stab, Rockets, AprilFools, ThatActuallyHappened, Magnet, BeCareful };
-        private static List<string> MentionQuips = new List<string> {SomethingWrong, ZuccBoi, StealData, Russian, Muskyboi, Fail, Intern, Coding, Spaceballs, NotAFlamethrower, MovingQuickly, Underappreciated, Haggling, DontGoogleIt, Beware };
+        private static List<string> RegularQuips = new List<string> {Wholesome, WatchItHappen, Extraordinary, Seppuku, RealityIsNotReal, Mars, Failure, NegativeFeedback,
+            SelfDrivingCars, Work, Ummm, Stealing, RussianMissiles, Pyramids, GoingHome, Vacation, RussianAssassaination, Dating, FutureOfCars, Catgirls, NoCats,
+            WarrenBuffett, KanyeWest, Money, ScientificallyCorrect, WhereAreTheAliens, IAmAnAlien, Scale, MarsBars, Reality, HaHa, BusinessPlan, PlanesInSpace,
+            Considerations, Emperor, BadDate, Tunnels, IWasJoking, Irony, Me, WatchThis, Awkward, FlamethrowerSales, TunnelCreator, AlienSubterfuge, GetOffLawn,
+            ThatWouldSuck, TerribleIdea, Stab, Rockets, AprilFools, ThatActuallyHappened, Magnet, BeCareful };
+
+        private static List<string> MentionQuips = new List<string> {SomethingWrong, ZuccBoi, StealData, Russian, Muskyboi, Fail, Intern, Coding, Spaceballs,
+            NotAFlamethrower, MovingQuickly, Underappreciated, Haggling, DontGoogleIt, Beware };
         
         //regular strings
         public const string Wholesome = "When something is important enough, you do it even if the odds are not in your favor.";
