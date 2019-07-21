@@ -42,7 +42,7 @@ namespace MuskBot.Helper
         public const string KanyeWest = "Well Kanye West... Obviously";
         public const string Money = "Imagine a pallet of cash, burning up, falling through the atmosphere.";
         public const string ScientificallyCorrect = "This is like,  80% scientifically correct.";
-        public const string WhereAreTheAliens = "Where are the aliens.";
+        public const string WhereAreTheAliens = "Where are the aliens?";
         public const string IAmAnAlien = "Some people think that I am an alien";
         public const string Scale = "It's on scale for scale's sake.";
         public const string MarsBars = "I think Mars should have really great bars. 'The Mars Bar'.";
